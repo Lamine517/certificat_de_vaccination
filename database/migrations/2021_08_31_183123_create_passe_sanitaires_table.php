@@ -18,11 +18,12 @@ class CreatePasseSanitairesTable extends Migration
             $table->string('prenom');
             $table->string('nom');
             $table->string('telephone');
+            $table->string('email');
             $table->string('cv_recto');
             $table->string('cv_verso');
             $table->string('cni_recto');
             $table->string('cni_verso');
-            $table->string('billet');
+            $table->string('billet')->nullable();
             $table->timestamps();
         });
     }

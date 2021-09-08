@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PasseSanitaireController;
+// use App\Http\Controllers\PasseSanitaireController;
+use App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +20,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/admins', [App\Http\Controllers\HomeController::class, 'index'])->name('admins');
+Route::get('/admins/{admin}', [App\Http\Controllers\HomeController::class, 'show'])->name('admins.show');
+Route::get('/admins/{admin}', [App\Http\Controllers\HomeController::class, 'destroy'])->name('admins.destroy');
 
   
 Route::resource('passe_sanitaires', PasseSanitaireController::class);
+  
+Route::resource('admins', HomeController::class);
+Route::get('users', [UserController::class, 'index'])->name('users.index');

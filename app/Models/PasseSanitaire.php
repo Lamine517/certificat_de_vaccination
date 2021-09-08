@@ -9,6 +9,6 @@ class PasseSanitaire extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'prenom', 'nom', 'telephone', 'cv_recto', 'cv_verso', 'cni_recto', 'cni_verso' , 'billet'
+        'prenom', 'nom', 'telephone', 'email' ,'cv_recto', 'cv_verso', 'cni_recto', 'cni_verso' , 'billet'
     ];
 }

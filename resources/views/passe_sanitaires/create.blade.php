@@ -28,10 +28,15 @@
                         </div><br><br>
                         <div class="row">
                             <div class="col-75">
-                                <label for="tel">Numéro de Téléphone</label><br>
+                                <label for="telephone">Numéro de Téléphone</label><br>
                                 <input type="number" id="telephone" name="telephone" placeholder="votre numéro de téléphone">
                             </div>
+                            <div class="col-75">
+                                <label for="email">Email</label><br>
+                                <input type="email" id="email" name="email" placeholder="votre adresse email">
+                            </div>
                         </div>
+                       
                     </div>
                     <!-- pour la carte de vaccination -->
                     <div id="cs">
@@ -68,7 +73,7 @@
 
                         <span class="billet" id="divCacher" style="display: none;">
                             <label for="billet">Billet d'avion / VISA / Autres</label><br>
-                            <input type="file" id="billet" name="billet"><br>
+                            <input type="file" id="billet" name="billet" value="0"><br>
                         </span>
                     </div><br><br>
                     <div class="row">
