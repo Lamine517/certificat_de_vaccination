@@ -57,8 +57,13 @@
 
 
 <script type="text/javascript">
-  $(function () {
-    
+
+$(function(){
+  $.ajaxSetup({
+            headers:{
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
     var table = $('.datatable').DataTable({
         processing: true,
         serverSide: true,
@@ -77,18 +82,17 @@
             },
         ]
     });
-    
-  });
-
-
-  // delete
+      // delete
   $('body').on('click', '.deletePS', function (){
-            var admins_id = $(this).data("id");
-            var result = confirm("Are You sure want to delete !");
+            var passe_sanitaire_id = $(this).data("id");
+            var result = confirm("Etes vous sur de le supprimer !");
             if(result){
                 $.ajax({
+                  headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+          },
                     type: "DELETE",
-                    url: "{{ route('admins.store') }}"+'/'+admins_id,
+                    url: "{{ route('admins.store') }}"+'/'+passe_sanitaire_id,
                     success: function (data) {
                         table.draw();
                     },
@@ -100,6 +104,10 @@
                 return false;
             }
         });
+
+     
+    });
+
   
 </script>
 

@@ -44,7 +44,7 @@ class PasseSanitaireController extends Controller
             'cv_verso' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1999',
             'cni_recto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1999',
             'cni_verso' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1999',
-            'billet' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'billet' => 'image|nullable|mimes:jpeg,png,jpg,gif,svg|max:1999',
         ]);
   
         $input = $request->all();
@@ -54,31 +54,9 @@ class PasseSanitaireController extends Controller
         $cni_recto = $request->file('cni_recto');
         $cni_verso = $request->file('cni_verso');
         $billet = $request->file('billet');
-        // $destinationPath = 'img/';
+       
   
-        if ($cv_recto && $cv_verso && $cni_recto && $cni_verso ) {
-            $destinationPath = 'img/cv_recto/';
-            $Moncv_recto = date('YmdHis') . "." . $cv_recto->getClientOriginalExtension();
-            $cv_recto->move($destinationPath, $Moncv_recto);
-            $input['cv_recto'] = "$Moncv_recto";
-
-            $destinationPath = 'img/cv_verso/';
-            $Moncv_verso = date('YmdHis') . "." . $cv_verso->getClientOriginalExtension();
-            $cv_verso->move($destinationPath, $Moncv_verso);
-            $input['cv_verso'] = "$Moncv_verso";
-
-            $destinationPath3 = 'img/cni_recto/';
-            $Moncni_recto = date('YmdHis') . "." . $cni_recto->getClientOriginalExtension();
-            $cni_recto->move($destinationPath3, $Moncni_recto);
-            $input['cni_recto'] = "$Moncni_recto";
-
-            $destinationPath4 = 'img/cni_verso';
-            $Moncni_verso = date('YmdHis') . "." . $cni_verso->getClientOriginalExtension();
-            $cni_verso->move($destinationPath4, $Moncni_verso);
-            $input['cni_verso'] = "$Moncni_verso";
-
-
-        }else if($cv_recto && $cv_verso && $cni_recto && $cni_verso && $billet){
+        if ($cv_recto && $cv_verso && $cni_recto && $cni_verso && $billet) {
             $destinationPath = 'img/cv_recto/';
             $Moncv_recto = date('YmdHis') . "." . $cv_recto->getClientOriginalExtension();
             $cv_recto->move($destinationPath, $Moncv_recto);
@@ -103,6 +81,27 @@ class PasseSanitaireController extends Controller
             $Monbillet = date('YmdHis') . "." . $billet->getClientOriginalExtension();
             $billet->move($destinationPath5, $Monbillet);
             $input['billet'] = "$billet";
+        }
+        else if($cv_recto && $cv_verso && $cni_recto && $cni_verso){
+            $destinationPath = 'img/cv_recto/';
+            $Moncv_recto = date('YmdHis') . "." . $cv_recto->getClientOriginalExtension();
+            $cv_recto->move($destinationPath, $Moncv_recto);
+            $input['cv_recto'] = "$Moncv_recto";
+
+            $destinationPath = 'img/cv_verso/';
+            $Moncv_verso = date('YmdHis') . "." . $cv_verso->getClientOriginalExtension();
+            $cv_verso->move($destinationPath, $Moncv_verso);
+            $input['cv_verso'] = "$Moncv_verso";
+
+            $destinationPath3 = 'img/cni_recto/';
+            $Moncni_recto = date('YmdHis') . "." . $cni_recto->getClientOriginalExtension();
+            $cni_recto->move($destinationPath3, $Moncni_recto);
+            $input['cni_recto'] = "$Moncni_recto";
+
+            $destinationPath4 = 'img/cni_verso/';
+            $Moncni_verso = date('YmdHis') . "." . $cni_verso->getClientOriginalExtension();
+            $cni_verso->move($destinationPath4, $Moncni_verso);
+            $input['cni_verso'] = "$Moncni_verso";
         }
     
       

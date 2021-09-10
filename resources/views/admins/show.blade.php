@@ -73,13 +73,13 @@
                         <div class="row row-cols-4">
                             <div class="col-6">
                                 <label for="">Billet / VISA / Autres</label>
-                                <img src="/img/billet/{{ $passe_sanitaire->billet}}" width="100%" alt="Pas d'images pour le billet">
+                                <img src="{{ $passe_sanitaire->billet }}" width="100%" alt="Pas d'images pour le billet">
                             </div>
                         </div>
                     <!-- </div> -->
                     </div>
                             <div class="col-4 bg-lights">
-                            <form>
+                            <form action="" method="POST" enctype="multipart/form-data" class="border border-dark p-2">
                                 <br>
                                     <div class="border border-5"></div>
                                     <div class="row">
@@ -98,16 +98,16 @@
                                         <div class="col">
                                             <br>
                                             <label>Choisissez le mode d'envoi</label>
-                                            <div class="row">
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" name="envoi" id="sms" value="sms" class="custom-control-input">
-                                                <label for="sms" class="custom-control-label">Par SMS</label>
-                                            </div>
-                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" name="envoi" id="email" value="email" class="custom-control-input">
-                                                <label for="email" class="custom-control-label">Par Email</label>
-                                            </div>
+                                            <div class="col p-2">
+                                                <div class="custom-control custom-radio ">
+                                                    <input type="radio" name="envoi" id="sms" value="sms" class="custom-control-input">
+                                                    <label for="sms" class="custom-control-label">Par SMS</label>
+                                                </div>
+                                                
+                                                <div class="custom-control custom-radio ">
+                                                    <input type="radio" name="envoi" id="email" value="email" class="custom-control-input">
+                                                    <label for="email" class="custom-control-label">Par Email</label>
+                                                </div>
                                             </div>
                                         </div>
                     

@@ -12,28 +12,28 @@
         </div>
         <div class="demo-right">
             <div class="contain-form">
-                <form action="{{ route('passe_sanitaires.store') }}" method="POST" enctype="multipart/form-data" name="formulaire">
+                <form action="{{ route('passe_sanitaires.store') }}" method="POST" enctype="multipart/form-data" id="formulaire">
                 @csrf
                     <div id="ip">
                         <h4>Informations Personnelles</h4><hr>
                         <div class="row">
                             <div class="col-75-m">
                                 <label for="prenom">Prénom</label><br>
-                                <input type="text" id="prenom" name="prenom" placeholder="votre prénom">
+                                <input type="text" id="prenom" name="prenom" placeholder="votre prénom" required>
                             </div>
                             <div class="col-75-m">
                                 <label for="nom">Nom</label><br>
-                                <input type="text" id="nom" name="nom" placeholder="votre nom">
+                                <input type="text" id="nom" name="nom" placeholder="votre nom" required>
                             </div>
                         </div><br><br>
                         <div class="row">
                             <div class="col-75">
                                 <label for="telephone">Numéro de Téléphone</label><br>
-                                <input type="number" id="telephone" name="telephone" placeholder="votre numéro de téléphone">
+                                <input type="number" id="telephone" name="telephone" placeholder="votre numéro de téléphone" required>
                             </div>
                             <div class="col-75">
                                 <label for="email">Email</label><br>
-                                <input type="email" id="email" name="email" placeholder="votre adresse email">
+                                <input type="email" id="email" name="email" placeholder="votre adresse email" required>
                             </div>
                         </div>
                        
@@ -44,11 +44,11 @@
                         <div class="row">
                             <div class="col-75-m">
                                 <label for="cv_recto">Recto</label><br>
-                                <input type="file" id="cv_recto" name="cv_recto">
+                                <input type="file" id="cv_recto" name="cv_recto" required>
                             </div>
                             <div class="col-75-m">
                                 <label for="cv_verso">Verso</label><br>
-                                <input type="file" id="cv_verso" name="cv_verso">
+                                <input type="file" id="cv_verso" name="cv_verso" required>
                             </div>
                         </div>
                     </div>
@@ -58,11 +58,11 @@
                         <div class="row">
                             <div class="col-75-m">
                                 <label for="cni_recto">Recto</label><br>
-                                <input type="file" id="cni_recto" name="cni_recto">
+                                <input type="file" id="cni_recto" name="cni_recto" required>
                             </div>
                             <div class="col-75-m">
                                 <label for="cni_verso">Verso</label><br>
-                                <input type="file" id="cni_verso" name="cni_verso">
+                                <input type="file" id="cni_verso" name="cni_verso" required>
                             </div>
                         </div>
                     </div><br>
@@ -71,17 +71,15 @@
                         <input type="checkbox" onclick="billett()">&nbsp;&nbsp;
                         <label for="">Cocher en cas d'urgence ( optionnel )</label>
 
-                        <span class="billet" id="divCacher" style="display: none;">
+                        <div class="billet" id="divCacher" style="display: none;">
                             <label for="billet">Billet d'avion / VISA / Autres</label><br>
-                            <input type="file" id="billet" name="billet" value="0"><br>
-                        </span>
+                            <input type="file" id="billet" name="billet"><br>
+                        </div>
                     </div><br><br>
                     <div class="row">
                         <input type="submit" value="Envoyer">
                     </div>
                     
-                    <!-- message -->
-                    <span class="success" id="success" style="display:none"></span>
                 </form>
             </div>
         </div>
@@ -89,29 +87,12 @@
 
     <script>
         function billett() { 
-            var span = document.getElementById("divCacher");
-            if (span.style.display === "none"){
-                span.style.display = "block";
+            var div = document.getElementById("divCacher");
+            if (div.style.display === "none"){
+                div.style.display = "block";
             } else {
-                span.style.display = "none";
+                div.style.display = "none";
             }
         }
-        $('form').on('submit',function(){
-            alert('succees');
-        });
-
-        // $(document).ready(function(){
-        //     $("form[name='formulaire']").submit(function(){
-
-        //         $.ajax({
-        //             type: "POST",
-        //             url: "{{ route('passe_sanitaires.index')",
-        //             data: $(this).serialize(),
-        //             succees: function(){
-        //                 $('.success').fadeIn(100).show();
-        //             }
-        //         })
-        //     })
-        // })
     </script>
 @endsection

@@ -39,20 +39,27 @@ class HomeController extends Controller
             $passe_sanitaires = PasseSanitaire::all();
             return datatables()->of($passe_sanitaires)
                 ->addColumn('action', function ($row) {
-                    $html = '<a href="'.route('admins.show',$row->id).'" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Voir" class="edit btn btn-primary btn-sm voirPS"><i class="fas fa-pen text-white"></i></a>';
-                    // $html = '<a href="'.'admins/'.$row->id.'" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Voir" class="edit btn btn-primary btn-sm voirPS"><i class="fas fa-pen text-white"></i></a>';
-                    $html = $html.' <a href="javascript:void(0)" data-toggle="Supprimer" data-id="'.$row->id.'" data-original-title="Supprimer" class="btn btn-danger btn-sm deletePS"><i class="far fa-trash-alt text-white" data-feather="supprimer"></i></a>';
+                    $html = '<a href="'.route('admins.show',$row->id).'" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Voir" class="edit btn btn-primary btn-sm voirPS"><i class="fas fa-eye text-white"></i></a>';
+                    $html = $html.' <a href="javascript:void(0)" data-toggle="Supprimer" data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deletePS"><i class="far fa-trash-alt text-white" data-feather="delete"></i></a>';
                     return $html;
                 })->toJson();
         }
 
         return view('admins.index');
     }
+
+    public function store(Request $request)
+    {
+        $input = $request->all();
+        PasseSanitaire::updateOrCreate($input);        
+   
+        return response()->json(['success'=>'Passe Sanitaire saved successfully.']);
+    }
     
         /**
      * Display the specified resource.
      *
-     * @param  \App\PasseSanitaire  $product
+     * @param  \App\PasseSanitaire  $PasseSanitaire
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -79,7 +86,7 @@ class HomeController extends Controller
     {
         PasseSanitaire::find($id)->delete();
      
-        return response()->json(['success'=>'Demande deleted successfully.']);
+        return response()->json(['success'=>'Demande supprimer avec  success.']);
     }
     
   
