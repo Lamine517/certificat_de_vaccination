@@ -19,6 +19,7 @@ class CreateRendezVousesTable extends Migration
             $table->date("date");
             $table->time("heure");
             $table->longText("observation");
+            $table->string('type_envoi');
     
             $table->foreign('passe_sanitaires_id')->references('id')->on('passe_sanitaires');
          

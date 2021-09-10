@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\PasseSanitaireController;
-use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,9 +14,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
@@ -28,4 +28,4 @@ Route::get('/admins/{admin}', [App\Http\Controllers\HomeController::class, 'dest
 Route::resource('passe_sanitaires', PasseSanitaireController::class);
   
 Route::resource('admins', HomeController::class);
-Route::get('users', [UserController::class, 'index'])->name('users.index');
+
