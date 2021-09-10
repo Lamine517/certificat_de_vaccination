@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-<div class="wrapper">
+<div class="wrapper" style="height:1000px">
 
     @section('content')
     
@@ -27,128 +27,107 @@
                                 <thead>
                                         <tr>
                                             <th scope="col">Numero:</th>
-                                            <td>SEN-1234-56577</td>
+                                            <td>12</td>
                                             <th scope="col">Prenom:</th>
-                                            <td>{{ $passe_sanitaire->prenom }}</td>
+                                            <td>{{ $passe_sanitaire->prenom }} Lamine</td>
                                             <th scope="col">Nom:</th>
                                             <td>Dieme</td>
                                             <th scope="col">Telephone:</th>
                                             <td>+221 78 183 73 70</td>
                                         </tr>
                                 </thead>
-
                         </table>
                     </div>
-
+                    <!--  -->
+                    <div class="container">
                         <div class="row">
-                            <table class="table table-striped border border-primary">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Carte de vaccination Recto</th>
-                                        <th scope="col">Carte de vaccination Verso</th>
-                                        <th scope="col">CNI/Passeport Recto</th>
-                                        <th scope="col">CNI/Passeport Verso</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <div class="row">
-                                            <td>
-                                                <div class="col-12">
-                                                    <img src="{{ asset('img/20210901231823.jpeg') }}" alt="pas d'images" width="100%">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12 border border-primary">
-                                                    <img src="{{ asset('img/TELFIGMA.jpeg') }}" alt="pas d'images" width="100%" height="auto">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <img src="{{ asset('img/20210901231823.jpeg') }}" alt="pas d'images" width="100%" height="100%">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <img src="{{ asset('img/TELFIGMA.jpeg') }}" alt="pas d'images" width="100%">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-12">
-                                                    <img src="{{ asset('img/TELFIGMA.jpeg') }}" alt="pas d'images" width="100%">
-                                                </div>
-                                            </td>
+                            <div class="col-8 ">
+                                    <!-- les images -->
+                    <!-- <div class="col-9"> -->
+                        <div class="row row-cols-2">
+                            <div class="col">
+                                <label for="">Carte de vaccination Recto</label>
+                                <img src="{{ asset('img/cv_recto.jpeg') }}" alt="pas d'images" width="100%" >
+                            </div>
+                            <div class="col">
+                                <label for="">Carte de vaccination Verso</label>
+                                <img src="{{ asset('img/cv_recto.jpeg') }}" alt="pas d'images" width="100%" >
+                            </div> 
+                        </div>
+
+                        <div class="row row-cols-3">
+                            <div class="col">
+                                <label for="">CNI/Passeport Recto</label>
+                                <a href="#">
+                                    <img src="{{ asset('img/cni_recto.jpeg') }}" alt="pas d'images" width="100%">
+                                </a>
+                            </div>
+                            <div class="col">
+                                <label for="">CNI/Passeport Verso</label>
+                                <img src="{{ asset('img/cni_verso.jpeg') }}" alt="pas d'images" width="100%" >
+                            </div>
+                        </div>
+
+                        <div class="row row-cols-4">
+                            <div class="col-6">
+                                <label for="">Billet / VISA / Autres</label>
+                                <img src="{{ asset('img/billet.jpeg') }}" alt="pas d'images" width="100%" >
+                            </div>
+                        </div>
+                    <!-- </div> -->
+                    </div>
+                            <div class="col-4 bg-lights">
+                            <form>
+                                <br>
+                                    <div class="border border-5"></div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="">Date</label>
+                                            <input type="date" class="form-control">
                                         </div>
-                                    </tr>
-                                 
-                                </tbody>
-                                
-                               
-                            </table>
-            
-                </div>
-                    <!-- <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2> Infos</h2>
-            </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('admins.index') }}"> Retour</a>
-            </div>
-        </div>
-    </div>
-     
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Prenom:</strong>
-                {{ $passe_sanitaire->prenom }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Nom:</strong>
-                {{ $passe_sanitaire->nom }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Telephone:</strong>
-                {{ $passe_sanitaire->telephone }}
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>CV Recto:</strong>
-                <img src="/img/{{ $passe_sanitaire->cv_recto }}" width="500px">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>CV Verso:</strong>
-                <img src="/img/{{ $passe_sanitaire->cv_verso }}" width="500px">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>CNI Recto:</strong>
-                <img src="/img/{{ $passe_sanitaire->cni_recto }}" width="500px">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>CNI_Verso:</strong>
-                <img src="/img/{{ $passe_sanitaire->cni_verso }}" width="500px">
-            </div>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Billet :</strong>
-                <img src="/img/{{ $passe_sanitaire->billet }}" width="500px">
-            </div>
-        </div>
-    </div> -->
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="">Heure</label>
+                                            <input type="time" class="form-control" >
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <br>
+                                            <label>Choisissez le mode d'envoi</label>
+                                            <div class="row">
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" name="envoi" id="sms" value="sms" class="custom-control-input">
+                                                <label for="sms" class="custom-control-label">Par SMS</label>
+                                            </div>
+                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" name="envoi" id="email" value="email" class="custom-control-input">
+                                                <label for="email" class="custom-control-label">Par Email</label>
+                                            </div>
+                                            </div>
+                                        </div>
                     
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <label for="">Observations</label>
+                                            <textarea name="" id="" cols="90" rows="10" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                    
+                                        <div class="col">
+                                            <label for=""></label><br>
+                                            <button type="submit" class="btn btn-primary">Valider</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                                            <button type="reset" class="btn btn-danger">Annuler</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>   
                 </div>
           </div><!-- /.col -->
           

@@ -76,6 +76,8 @@ class PasseSanitaireController extends Controller
             $Moncni_verso = date('YmdHis') . "." . $cni_verso->getClientOriginalExtension();
             $cni_verso->move($destinationPath4, $Moncni_verso);
             $input['cni_verso'] = "$Moncni_verso";
+
+
         }else if($cv_recto && $cv_verso && $cni_recto && $cni_verso && $billet){
             $destinationPath = 'img/cv_recto/';
             $Moncv_recto = date('YmdHis') . "." . $cv_recto->getClientOriginalExtension();

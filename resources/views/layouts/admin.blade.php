@@ -4,40 +4,25 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>MSAS</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    
        <!-- Fonts -->
-       <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-    <link rel="stylesheet" href="{{ asset('fonts/css/all.css')}}">
-    <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href=" {{ asset('fonts/css/all.min.css') }}">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
-  <link href="{{ asset('DataTables/DataTables-1.10.24/css/jquery.dataTables.css') }}" rel="stylesheet">
-  <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" />
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
+      <link rel="dns-prefetch" href="//fonts.gstatic.com">
+      <!-- <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"> -->
+      <link rel="stylesheet" href="{{ asset('fonts/css/all.css')}}">
+      <!-- Google Font: Source Sans Pro -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+      <!-- Font Awesome Icons -->
+      <link rel="stylesheet" href=" {{ asset('fonts/css/all.min.css') }}">
+      <!-- Theme style -->
+      <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+      <!--code datatables  -->
+      <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+<link rel="stylesheet" href="{{ asset('DataTables/DataTables-1.10.24/css/jquery.dataTables.min.css') }}"/>
+<link rel="stylesheet" href="{{ asset('DataTables/DataTables-1.10.24/css/dataTables.bootstrap4.min.css') }}"/>
+<!-- <script src="{{ asset('jquery/jquery.js') }}"></script>  -->
 
-    <!-- Scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script> 
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('jquery/jquery.js') }}"></script> 
-    <script src="{{ asset('jquery/jquery.validate.js') }}"></script>
-    <script src="{{ asset('DataTables/DataTables-1.10.24/js/jquery.dataTables.js') }}"></script>
-
-
-  
 </head>
 <body class="hold-transition sidebar-mini">
 
@@ -118,7 +103,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="{{ asset('dist/img/user1-128x128.jpg') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <img src="{{ asset('dist/img/msas-logo.png') }}" alt="User Avatar" class="img-size-50 mr-3 img-circle">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Brad Diesel
@@ -134,7 +119,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="{{ asset('dist/img/user8-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="{{ asset('dist/img/msas-logo.png') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   John Pierce
@@ -150,7 +135,7 @@
           <a href="#" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
-              <img src="{{ asset('dist/img/user3-128x128.jpg') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <img src="{{ asset('dist/img/msas-logo.png') }}" alt="User Avatar" class="img-size-50 img-circle mr-3">
               <div class="media-body">
                 <h3 class="dropdown-item-title">
                   Nora Silvester
@@ -212,7 +197,7 @@
             <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="" class="brand-link">
       <img src="{{ asset('dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">Passe Sanitaire</span>
     </a>
@@ -222,24 +207,14 @@
       <!-- Sidebar user panel (optional) -->
       <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-          <img src="{{ asset('dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+          <img src="{{ asset('dist/img/msas-logo.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
           <a href="#" class="d-block">Administrateur</a>
         </div>
       </div>
 
-      <!-- SidebarSearch Form -->
-      <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-          <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-          <div class="input-group-append">
-            <button class="btn btn-sidebar">
-              <i class="fas fa-search fa-fw"></i>
-            </button>
-          </div>
-        </div>
-      </div>
+    
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -259,6 +234,12 @@
                 <a href="#" class="nav-link active" style="color:white">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Liste des inscrits</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link " style="color:white">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Liste des rendez-vous</p>
                 </a>
               </li>
 
@@ -284,26 +265,17 @@
     <!-- Default to the left -->
     <strong>Copyright &copy; 2021 <a href="https://www.sante.gouv.sn/">Ministere de la Sante et de l'Action Sociale</a>.</strong> Tous droits reservés.
   </footer>
+    
     <script src="{{ asset('jquery/jquery.min.js')}}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <!-- AdminLTE App -->
     <script src="{{ asset('dist/js/adminlte.min.js')}}"></script> 
-    <script type="text/javascript">
-  $(function () {
-    
-    var table = $('.data-table').DataTable({
-        processing: true,
-        serverSide: true,
-        ajax: "{{ route('admins.index') }}",
-        columns: [
-            {data: 'id', name: 'id'},
-            {data: 'prenom', name: 'prenom'},
-            {data: 'email', name: 'email'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
-        ]
-    });
-    
-  });
+    <script src="{{ asset('js/app.js') }}"></script> 
+<script src="{{ asset('jquery/jquery.validate.js') }}"></script> 
+<script src="{{ asset('DataTables/DataTables-1.10.24/js/jquery.dataTables.min.js') }}"></script> 
+<script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script> 
+<script src="{{ asset('DataTables/DataTables-1.10.24/js/dataTables.bootstrap.min.js') }}"></script>
 </body>
+
 </html>

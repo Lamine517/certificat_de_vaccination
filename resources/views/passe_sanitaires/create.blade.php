@@ -12,7 +12,7 @@
         </div>
         <div class="demo-right">
             <div class="contain-form">
-                <form action="{{ route('passe_sanitaires.store') }}" method="POST" enctype="multipart/form-data" >
+                <form action="{{ route('passe_sanitaires.store') }}" method="POST" enctype="multipart/form-data" name="formulaire">
                 @csrf
                     <div id="ip">
                         <h4>Informations Personnelles</h4><hr>
@@ -80,6 +80,8 @@
                         <input type="submit" value="Envoyer">
                     </div>
                     
+                    <!-- message -->
+                    <span class="success" id="success" style="display:none"></span>
                 </form>
             </div>
         </div>
@@ -94,5 +96,22 @@
                 span.style.display = "none";
             }
         }
+        $('form').on('submit',function(){
+            alert('succees');
+        });
+
+        // $(document).ready(function(){
+        //     $("form[name='formulaire']").submit(function(){
+
+        //         $.ajax({
+        //             type: "POST",
+        //             url: "{{ route('passe_sanitaires.index')",
+        //             data: $(this).serialize(),
+        //             succees: function(){
+        //                 $('.success').fadeIn(100).show();
+        //             }
+        //         })
+        //     })
+        // })
     </script>
 @endsection
