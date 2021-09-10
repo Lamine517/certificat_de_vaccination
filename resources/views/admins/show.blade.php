@@ -27,13 +27,15 @@
                                 <thead>
                                         <tr>
                                             <th scope="col">Numero:</th>
-                                            <td>12</td>
+                                            <td>{{ $passe_sanitaire->id}}</td>
                                             <th scope="col">Prenom:</th>
-                                            <td>{{ $passe_sanitaire->prenom }} Lamine</td>
+                                            <td>{{ $passe_sanitaire->prenom }}</td>
                                             <th scope="col">Nom:</th>
-                                            <td>Dieme</td>
+                                            <td>{{ $passe_sanitaire->nom }}</td>
                                             <th scope="col">Telephone:</th>
-                                            <td>+221 78 183 73 70</td>
+                                            <td>{{ $passe_sanitaire->telephone}}</td>
+                                            <th scope="col">Email:</th>
+                                            <td>{{ $passe_sanitaire->email }}</td>
                                         </tr>
                                 </thead>
                         </table>
@@ -47,11 +49,11 @@
                         <div class="row row-cols-2">
                             <div class="col">
                                 <label for="">Carte de vaccination Recto</label>
-                                <img src="{{ asset('img/cv_recto.jpeg') }}" alt="pas d'images" width="100%" >
+                                <img src="/img/cv_recto/{{ $passe_sanitaire->cv_recto }}" width="100%">
                             </div>
                             <div class="col">
                                 <label for="">Carte de vaccination Verso</label>
-                                <img src="{{ asset('img/cv_recto.jpeg') }}" alt="pas d'images" width="100%" >
+                                <img src="/img/cv_verso/{{ $passe_sanitaire->cv_verso }}" width="100%">
                             </div> 
                         </div>
 
@@ -59,19 +61,19 @@
                             <div class="col">
                                 <label for="">CNI/Passeport Recto</label>
                                 <a href="#">
-                                    <img src="{{ asset('img/cni_recto.jpeg') }}" alt="pas d'images" width="100%">
+                                    <img src="/img/cni_recto/{{ $passe_sanitaire->cni_recto}}" width="100%">
                                 </a>
                             </div>
                             <div class="col">
                                 <label for="">CNI/Passeport Verso</label>
-                                <img src="{{ asset('img/cni_verso.jpeg') }}" alt="pas d'images" width="100%" >
+                                <img src="/img/cni_verso/{{ $passe_sanitaire->cni_verso}}" width="100%">
                             </div>
                         </div>
 
                         <div class="row row-cols-4">
                             <div class="col-6">
                                 <label for="">Billet / VISA / Autres</label>
-                                <img src="{{ asset('img/billet.jpeg') }}" alt="pas d'images" width="100%" >
+                                <img src="/img/billet/{{ $passe_sanitaire->billet}}" width="100%" alt="Pas d'images pour le billet">
                             </div>
                         </div>
                     <!-- </div> -->

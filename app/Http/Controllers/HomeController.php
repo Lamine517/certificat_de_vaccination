@@ -39,15 +39,8 @@ class HomeController extends Controller
             $passe_sanitaires = PasseSanitaire::all();
             return datatables()->of($passe_sanitaires)
                 ->addColumn('action', function ($row) {
-
-                    // $html = '<a href="javascript:void(0)" class="edit btn btn-info btn-sm">Afficher</a>' ; 
-                    // $html = '<a href="' . route("admins.show",$passe_sanitaire->id) . '" class="edit btn btn-info btn-sm">Afficher</a>' ; 
-                    // $html = $html . '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">Modifier</a>' ;
-                    // $html = $html . '<a href="javascript:void(0)" class="edit btn btn-danger btn-sm">Supprimer</a>' ;
-
-                    // $html = '<a href="{{ route(admins.show,$passe_sanitaire->id) }}" class="btn btn-xs btn-secondary btn-edit">Voir</a> ';
-                    // $html .= '<button data-rowid="' . $row->id . '" class="btn btn-xs btn-danger btn-delete">Supprimer</button>';
-                    $html = '<a href="javascript:void(0)" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Voir" class="edit btn btn-primary btn-sm voirPS"><i class="fas fa-pen text-white"></i></a>';
+                    $html = '<a href="'.route('admins.show',$row->id).'" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Voir" class="edit btn btn-primary btn-sm voirPS"><i class="fas fa-pen text-white"></i></a>';
+                    // $html = '<a href="'.'admins/'.$row->id.'" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Voir" class="edit btn btn-primary btn-sm voirPS"><i class="fas fa-pen text-white"></i></a>';
                     $html = $html.' <a href="javascript:void(0)" data-toggle="Supprimer" data-id="'.$row->id.'" data-original-title="Supprimer" class="btn btn-danger btn-sm deletePS"><i class="far fa-trash-alt text-white" data-feather="supprimer"></i></a>';
                     return $html;
                 })->toJson();
@@ -65,7 +58,8 @@ class HomeController extends Controller
     public function show($id)
     {
         $passe_sanitaire = PasseSanitaire::find($id);
-        return response()->json($passe_sanitaire);
+        // return response()->json($passe_sanitaire);
+        return view('admins.show',compact('passe_sanitaire'));
     }
   
     /**
