@@ -23,10 +23,20 @@
                     <!-- {{ __('Vous etes connecte en tant que administrateur') }} -->
                     <br><br>
 
-                    <h1>La liste des demandes</h1>
+                    <h1>La liste des demandes</h1><br>
+                    <!-- <div class="col-12">
+                        <div class="col">
+                            <button type="button" class="btn btn-danger pull-left">Tous supprimes</button>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-primary pull-right">Envoyer</button>
+                        </div>
+                    </div> -->
+                    
                     <table class="table table-bordered  table-striped datatable" style="width:960px">
                         <thead>
                             <tr>
+                                <th></th>
                                 <th>N°</th>
                                 <th>Prenom</th>
                                 <th>Nom</th>
@@ -69,6 +79,8 @@ $(function(){
         serverSide: true,
         ajax: "{{ route('admins.index') }}",
         columns: [
+            {data: 'checkbox', name: 'checkbox'},
+            
             {data: 'id', name: 'id'},
             {data: 'prenom', name: 'prenom'},
             {data: 'nom', name: 'nom'},

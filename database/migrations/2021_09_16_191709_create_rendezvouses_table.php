@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRendezVousesTable extends Migration
+class CreateRendezvousesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,19 @@ class CreateRendezVousesTable extends Migration
      */
     public function up()
     {
-        Schema::create('rendez-vouses', function (Blueprint $table) {
-            $table->id();
+        Schema::create('rendezvouses', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->unsignedBigInteger('passe_sanitaires_id');
             $table->date("date");
             $table->time("heure");
             $table->longText("observation");
             $table->string('type_envoi');
     
-            $table->foreign('passe_sanitaires_id')->references('id')->on('passe_sanitaires');
+            $table->foreign('passe_sanitaires_id')
+                  ->references('id')
+                  ->on('passe_sanitaires')
+                  ->onDelete('restrict')
+                  ->onUpdate('restrict');
          
             $table->timestamps();
         });
@@ -34,6 +38,6 @@ class CreateRendezVousesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rendez-vouses');
+        Schema::dropIfExists('rendezvouses');
     }
 }

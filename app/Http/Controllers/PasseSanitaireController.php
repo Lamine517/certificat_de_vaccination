@@ -38,7 +38,7 @@ class PasseSanitaireController extends Controller
         $request->validate([
             'prenom' => 'required',
             'nom' => 'required',
-            'telephone' => 'required',
+            'telephone' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
             'email' => 'required',
             'cv_recto' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1999',
             'cv_verso' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1999',
@@ -80,7 +80,7 @@ class PasseSanitaireController extends Controller
             $destinationPath5 = 'img/billet/';
             $Monbillet = date('YmdHis') . "." . $billet->getClientOriginalExtension();
             $billet->move($destinationPath5, $Monbillet);
-            $input['billet'] = "$billet";
+            $input['billet'] = "$Monbillet";
         }
         else if($cv_recto && $cv_verso && $cni_recto && $cni_verso){
             $destinationPath = 'img/cv_recto/';

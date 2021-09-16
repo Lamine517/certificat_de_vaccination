@@ -232,13 +232,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link active" style="color:white">
+                <a href="{{ route('admins.index') }}" class="nav-link active" style="color:white">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Liste des inscrits</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link " style="color:white">
+                <a href="{{ route('rendezVous.index') }}" class="nav-link " style="color:white">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Liste des rendez-vous</p>
                 </a>

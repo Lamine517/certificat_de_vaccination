@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\PasseSanitaire;
+use App\Models\{PasseSanitaire ,Rendezvous };
 use DataTables;
 
 class HomeController extends Controller
@@ -38,7 +38,10 @@ class HomeController extends Controller
             
             $passe_sanitaires = PasseSanitaire::all();
             return datatables()->of($passe_sanitaires)
+                ->addColumn('checkbox', '<input type="checkbox" name="pdr_chec[]" class="pdr_chec">')
+                ->rawColumns(['checkbox','action'])
                 ->addColumn('action', function ($row) {
+                    
                     $html = '<a href="'.route('admins.show',$row->id).'" data-toggle="tooltip" data-id="'.$row->id.'" data-original-title="Voir" class="edit btn btn-primary btn-sm voirPS"><i class="fas fa-eye text-white"></i></a>';
                     $html = $html.' <a href="javascript:void(0)" data-toggle="Supprimer" data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deletePS"><i class="far fa-trash-alt text-white" data-feather="delete"></i></a>';
                     return $html;
@@ -50,10 +53,27 @@ class HomeController extends Controller
 
     public function store(Request $request)
     {
-        $input = $request->all();
-        PasseSanitaire::updateOrCreate($input);        
-   
-        return response()->json(['success'=>'Passe Sanitaire saved successfully.']);
+        $rv = $this->validate($request, [
+            'passe_sanitaires_id' => 'required',
+            'date' => 'required',
+            'heure' => 'required',
+            'observation'=>'required',
+            'type_envoi' => 'required'
+         ]);
+
+         if($rv !== null)
+         {
+            Rendezvous::create($request->except(['_token']));
+            return view('rendezVous.index');
+            
+         }
+         else{
+
+            $input = $request->all();
+            PasseSanitaire::updateOrCreate($input);
+            return response()->json(['success'=>'Passe Sanitaire saved successfully.']);
+         }
+       
     }
     
         /**
@@ -68,20 +88,38 @@ class HomeController extends Controller
         // return response()->json($passe_sanitaire);
         return view('admins.show',compact('passe_sanitaire'));
     }
-  
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\PasseSanitaire  $product
-     * @return \Illuminate\Http\Response
-     */
-    // public function destroy(PasseSanitaire $passe_sanitaire)
-    // {
-    //     $passe_sanitaire->delete();
-     
-    //     return redirect()->route('admins.index')
-    //                     ->with('success','Patient deleted successfully');
-    // }
+
+    
+    // pour le type envoi
+    public function type_envoi(Request $request) {
+
+        // Form validation
+        $this->validate($request, [
+            'passe_sanitaires_id' => 'required',
+            'date' => 'required',
+            'heure' => 'required',
+            'observation'=>'required',
+            'type_envoi' => 'required'
+         ]);
+         
+
+        //  Store data in database
+        Rendezvous::create($request->except(['_token']));
+
+        //  Send mail to admin
+        // \Mail::send('mail', array(
+        //     'passe_sanitaires_id' => $request->get('passe_sanitaires_id'),
+        //     'date' => $request->get('date'),
+        //     'heure' => $request->get('heure'),
+        //     'observation' => $request->get('observation'),
+        //     'type_envoi' => $request->get('type_envoi'),
+        // ), function($message) use ($request){
+        //     $message->from($request->email);
+        //     $message->to('isepdd197@gmail.com', 'MSAS')->subject($request->get('observation'));
+        // });
+
+        return back()->with('success', 'We have received your message and would like to thank you for writing to us.');
+    }
     public function destroy($id)
     {
         PasseSanitaire::find($id)->delete();
@@ -89,5 +127,11 @@ class HomeController extends Controller
         return response()->json(['success'=>'Demande supprimer avec  success.']);
     }
     
+    public function deleteAll(Request $request)
+    {
+        $ids = $request->ids;
+        DB::table("passe_sanitaires")->whereIn('id',explode(",",$ids))->delete();
+        return response()->json(['success'=>"Passe sanitaire Deleted successfully."]);
+    }
   
 }

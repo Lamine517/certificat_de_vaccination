@@ -73,57 +73,67 @@
                         <div class="row row-cols-4">
                             <div class="col-6">
                                 <label for="">Billet / VISA / Autres</label>
-                                <img src="{{ $passe_sanitaire->billet }}" width="100%" alt="Pas d'images pour le billet">
+                                <img src="/img/billet/{{ $passe_sanitaire->billet}}" width="100%">
                             </div>
                         </div>
                     <!-- </div> -->
                     </div>
                             <div class="col-4 bg-lights">
-                            <form action="" method="POST" enctype="multipart/form-data" class="border border-dark p-2">
-                                <br>
+                            <form action="{{ route('admins.store') }}" method="POST" enctype="multipart/form-data" class="border border-dark p-2">
+                            @csrf        
+                            <br>
                                     <div class="border border-5"></div>
+                                     <!-- Recuperer l'identifiant -->
+                                     <div class="row">
+                                        <div class="col">
+                                            <input type="text" name="passe_sanitaires_id" id="passe_sanitaires_id" class="form-control" readonly value="{{ $passe_sanitaire->id}}">
+                                        </div>
+                                    </div>
+ 
+                                    <!-- Saisir la date -->
                                     <div class="row">
                                         <div class="col">
                                             <label for="">Date</label>
-                                            <input type="date" class="form-control">
+                                            <input type="date" class="form-control" id="date" name="date">
                                         </div>
                                     </div>
+                                    <!-- Saisir l'heure souhaite -->
                                     <div class="row">
                                         <div class="col">
                                             <label for="">Heure</label>
-                                            <input type="time" class="form-control" >
+                                            <input type="time" class="form-control" name="heure" id="heure" >
                                         </div>
                                     </div>
+                                    <!-- choisir le mode d'envoi -->
                                     <div class="row">
                                         <div class="col">
                                             <br>
                                             <label>Choisissez le mode d'envoi</label>
                                             <div class="col p-2">
                                                 <div class="custom-control custom-radio ">
-                                                    <input type="radio" name="envoi" id="sms" value="sms" class="custom-control-input">
+                                                    <input type="radio" name="type_envoi" id="sms" value="{{ $passe_sanitaire->telephone}}" class="custom-control-input">
                                                     <label for="sms" class="custom-control-label">Par SMS</label>
                                                 </div>
                                                 
                                                 <div class="custom-control custom-radio ">
-                                                    <input type="radio" name="envoi" id="email" value="email" class="custom-control-input">
+                                                    <input type="radio" name="type_envoi" id="email" value="{{ $passe_sanitaire->email}}" class="custom-control-input">
                                                     <label for="email" class="custom-control-label">Par Email</label>
                                                 </div>
                                             </div>
                                         </div>
-                    
                                     </div>
+                                    <!-- Observations -->
                                     <div class="row">
                                         <div class="col">
                                             <label for="">Observations</label>
-                                            <textarea name="" id="" cols="90" rows="10" class="form-control"></textarea>
+                                            <textarea name="observation" id="observation" cols="90" rows="10" class="form-control" ></textarea>
                                         </div>
                                     </div>
                                     <div class="row">
-                                    
                                         <div class="col">
                                             <label for=""></label><br>
-                                            <button type="submit" class="btn btn-primary">Valider</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
-                                            <button type="reset" class="btn btn-danger">Annuler</button>
+                                            <button type="submit" class="btn btn-primary float-left">Valider</button>  
+                                            <button type="reset" class="btn btn-danger float-right">Annuler</button>
                                         </div>
                                     </div>
                                 </form>

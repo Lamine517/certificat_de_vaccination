@@ -11,4 +11,9 @@ class PasseSanitaire extends Model
     protected $fillable = [
         'prenom', 'nom', 'telephone', 'email' ,'cv_recto', 'cv_verso', 'cni_recto', 'cni_verso' , 'billet'
     ];
+
+    public function rendezvous()
+    {
+        return $this->hasMany(Rendezvous::class);
+    }
 }

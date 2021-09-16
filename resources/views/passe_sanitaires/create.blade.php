@@ -28,7 +28,7 @@
                         </div><br><br>
                         <div class="row">
                             <div class="col-75">
-                                <label for="telephone">Numéro de Téléphone</label><br>
+                                <label for="telephone">Numéro de Téléphone <i>(WhatsApp)</i></label><br>
                                 <input type="number" id="telephone" name="telephone" placeholder="votre numéro de téléphone" required>
                             </div>
                             <div class="col-75">

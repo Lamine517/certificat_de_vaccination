@@ -14,7 +14,7 @@ class CreatePasseSanitairesTable extends Migration
     public function up()
     {
         Schema::create('passe_sanitaires', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('prenom');
             $table->string('nom');
             $table->string('telephone');
